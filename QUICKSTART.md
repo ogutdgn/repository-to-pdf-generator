@@ -1,98 +1,308 @@
-# Quick Start Guide
+# 🚀 Quick Start Guide
+
+Get your first PDF in under 2 minutes!
 
 ## Step 1: Install Dependencies
+
 ```bash
 npm install
 ```
 
-## Step 2: Clone a Repository
+This installs `pdfkit` and `inquirer` - the only two dependencies you need.
 
-Clone any GitHub repository into the `target-repo` directory:
+## Step 2: Add a Repository
 
+### Option A: Clone Manually
 ```bash
 cd target-repo
-git clone https://github.com/username/repository-name.git
+git clone https://github.com/username/awesome-project.git
 cd ..
 ```
 
-## Step 3: Generate PDF
+### Option B: Clone from Menu
+Just run `npm start` and select **"Clone a new repository from GitHub"** when prompted!
+
+## Step 3: Generate Your PDF
 
 ```bash
 npm start
 ```
 
-### What will happen:
+That's it! Now follow the interactive prompts.
 
-1. **Repository Selection**:
-   - You'll see your cloned repository as an available option
-   - Select it from the list
+---
 
-2. **Subdirectory Selection**:
-   - Option 1: Process entire repository (all folders)
-   - Option 2: Select a specific subdirectory (e.g., "src", "docs", "lib")
+## 📝 Complete Interactive Flow
 
-3. **Confirmation**:
-   - You'll see how many files were found
-   - Confirm to generate the PDF
+Here's exactly what you'll see and do:
 
-4. **Processing**:
-   - The script will process each file and show progress
-   - This may take 1-5 minutes depending on repository size
+### 1️⃣ Main Menu
 
-5. **Output**:
-   - PDF will be saved in `output/` directory
-   - Filename example: `repository-name_2026-01-30.pdf`
-
-## Example Workflow
-
-```bash
-# From the project root
-npm start
-
-# You'll see:
-# Available repositories:
-#   1. your-repository
-
-# Select your repository
-# Then choose: "Process entire repository" or "Select a subdirectory"
-# If subdirectory: choose the folder you want (e.g., "src", "docs")
-# Confirm: Yes
-# Wait for PDF generation...
-# Done! Check output/ folder
+```
+? What would you like to do?
+  > Select an existing repository
+    Clone a new repository from GitHub
+    Exit
 ```
 
-## Tips for Selective Processing
+**Choose** an option:
+- **Select existing**: Pick from repositories in `target-repo/`
+- **Clone new**: Enter a GitHub URL to clone
+- **Exit**: Quit the application
 
-### To process only a specific folder:
-1. Run `npm start`
-2. Select your repository
-3. Choose "Select a subdirectory"
-4. Select the folder you want (e.g., `src`, `docs`, `lib`)
-5. Confirm
+### 2️⃣ Repository Selection
 
-This will create a PDF with only files from that specific directory.
+```
+? Select a repository to convert:
+  > awesome-project
+    another-repo
+    my-library
+```
 
-### To process the entire repository:
-Choose "Process entire repository" when prompted.
+**Select** the repository you want to convert to PDF.
 
-## Adding New Repositories
+💡 **Tip**: Use arrow keys to navigate, Enter to select.
+
+### 3️⃣ Directory Scope
+
+```
+? What would you like to process?
+  > Process entire repository
+    Select a subdirectory
+    ← Go back
+```
+
+**Choose**:
+- **Entire repository**: Convert all files in all folders
+- **Subdirectory**: Pick a specific folder (src, docs, lib, etc.)
+- **Go back**: Return to repository selection
+
+### 4️⃣ Subdirectory Selection (if chosen)
+
+```
+? Select a subdirectory:
+  > awesome-project/src/
+    awesome-project/docs/
+    awesome-project/tests/
+    ← Go back
+```
+
+**Pick** the specific folder you want in your PDF.
+
+Shows a hierarchical view with full paths for clarity.
+
+### 5️⃣ Custom PDF Name (Optional)
+
+```
+? Enter PDF filename (or press Enter for default):
+```
+
+**Options**:
+- **Press Enter**: Use automatic naming (`repository-name_2026-01-30.pdf`)
+- **Type name**: Custom filename (e.g., `my-code-review.pdf`)
+
+✨ The `.pdf` extension is added automatically!
+
+### 6️⃣ Confirmation
+
+```
+Found 47 files to process.
+? Do you want to generate the PDF?
+  > Yes
+    No (go back to menu)
+```
+
+**Confirm** to start PDF generation.
+
+Shows total file count so you know what to expect.
+
+### 7️⃣ Processing
+
+```
+Processing file 1/47: src/index.js
+Processing file 2/47: src/utils/helpers.js
+Processing file 3/47: README.md
+...
+```
+
+Watch the progress as each file is added to your PDF!
+
+### 8️⃣ Success!
+
+```
+✓ PDF generated successfully!
+  Output: output/awesome-project_2026-01-30.pdf
+
+Press any key to continue...
+```
+
+**Done!** Your PDF is ready in the `output/` folder.
+
+---
+
+## 🎯 Common Workflows
+
+### Workflow 1: Full Repository PDF
 
 ```bash
+npm start
+# 1. Select: awesome-project
+# 2. Choose: Process entire repository
+# 3. Press Enter for default filename
+# 4. Confirm: Yes
+# ✓ Done! Check output/awesome-project_2026-01-30.pdf
+```
+
+**Best for**: Small to medium projects, complete documentation
+
+### Workflow 2: Specific Folder Only
+
+```bash
+npm start
+# 1. Select: awesome-project
+# 2. Choose: Select a subdirectory
+# 3. Pick: awesome-project/src/
+# 4. Enter custom name: "source-code"
+# 5. Confirm: Yes
+# ✓ Done! Check output/source-code.pdf
+```
+
+**Best for**: Large projects, specific code reviews, partial documentation
+
+### Workflow 3: Clone and Convert
+
+```bash
+npm start
+# 1. Choose: Clone a new repository from GitHub
+# 2. Enter: https://github.com/facebook/react.git
+# 3. Wait for cloning...
+# 4. Select: react
+# 5. Choose: Select a subdirectory → react/packages/
+# 6. Name it: "react-packages"
+# 7. Confirm: Yes
+# ✓ Done!
+```
+
+**Best for**: Quick analysis of new repositories
+
+---
+
+## 💡 Pro Tips
+
+### ✅ DO:
+- **Clone first** if you want the repo on disk permanently
+- **Use subdirectory** selection for large repos (faster!)
+- **Custom names** for specific purposes ("code-review", "v2.0-snapshot")
+- **Check file count** before confirming (adjust if needed)
+- **Process incrementally** for huge repos (docs/ first, then src/, etc.)
+
+### ❌ DON'T:
+- Clone massive repos without subdirectory selection (will be slow)
+- Expect real-time generation (large repos take time)
+- Worry about emojis or special characters (handled automatically!)
+- Include node_modules or build folders (already excluded)
+
+---
+
+## 📊 What to Expect
+
+### File Limits
+- **Max file size**: 200KB (larger files show first 100 lines only)
+- **Max lines**: 1,000 lines per file (truncated with message)
+- **Minified files**: Automatically skipped (.min.js, .min.css)
+
+### Processing Time
+| Repo Size | File Count | Time |
+|-----------|-----------|------|
+| Small | <50 files | 10-30s |
+| Medium | 50-200 files | 1-3 min |
+| Large | 200-500 files | 3-7 min |
+| Very Large | 500+ files | 7-15 min |
+
+### PDF Size
+Roughly **50-100KB per code file** on average.  
+Example: 100 files ≈ 5-10MB PDF
+
+---
+
+## 🔧 Troubleshooting Quick Fixes
+
+### "No folders found"
+```bash
+# Fix: Clone a repository first
 cd target-repo
-git clone https://github.com/username/another-repo.git
+git clone https://github.com/username/repo.git
 cd ..
 npm start
 ```
 
-Now you'll see both repositories in the list!
+### "No files found"
+- Try a different subdirectory
+- Check if repo only has excluded folders (node_modules, build, etc.)
+- Verify file extensions are supported (.js, .py, .md, etc.)
 
-## Troubleshooting
+### Clone fails
+- Check GitHub URL formatting
+- Ensure you have access (public repo or authenticated for private)
+- Try: `git clone <url>` manually to see the actual error
 
-**Problem**: "No folders found in target-repo directory"
-- **Solution**: Make sure you have cloned at least one repository into `target-repo/`
+### PDF missing files
+- Check excluded directories list (node_modules, .git, bin, etc.)
+- Verify file extensions are in INCLUDED_EXTENSIONS
+- Large files (>200KB) only show first 100 lines
 
-**Problem**: "No files found in the selected directory"
-- **Solution**: The directory might only contain excluded folders (node_modules, bin, etc.) or file types not in the included list
+---
 
-**Problem**: PDF generation is slow
-- **Solution**: This is normal for large repositories. Each file is being processed and formatted.
+## 🎨 Example Output Structure
+
+Your PDF will look like this:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    AWESOME PROJECT
+    Generated: Jan 30, 2026
+    Files: 47
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Project Structure:
+awesome-project/
+├── src/
+│   ├── index.js
+│   └── utils/
+│       └── helpers.js
+├── README.md
+└── package.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: src/index.js
+Modified: 2026-01-29
+Size: 1.2 KB
+
+1  import { helper } from './utils/helpers.js';
+2  
+3  function main() {
+4    console.log('Hello World');
+5  }
+...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Page 3 of 15
+```
+
+---
+
+## 🚦 Next Steps
+
+1. ✅ Generate your first PDF
+2. 📖 Read the [README.md](README.md) for advanced configuration
+3. ⚙️ Customize file extensions and exclusions in [script.js](script.js)
+4. 🔄 Share your PDFs with your team!
+
+---
+
+**Need more details?** Check the full [README.md](README.md) for:
+- Complete feature list
+- Configuration options
+- Use cases and examples
+- Troubleshooting guide
