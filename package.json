@@ -1,0 +1,17 @@
+{
+  "name": "github-pdf-copy",
+  "version": "1.0.0",
+  "description": "Generate PDF copies of GitHub repositories",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "keywords": ["pdf", "github", "repository", "documentation"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdfkit": "^0.15.0",
+    "inquirer": "^9.2.12"
+  }
+}
